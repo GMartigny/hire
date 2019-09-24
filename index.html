@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hire me now</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+<main>
+    <h1>Can you hire me now ?</h1>
+    <p id="available"></p>
+    <p id="infos"></p>
+</main>
+<script>
+    const api = "https://hire.gmartigny.now.sh/api/";
+    fetch(api)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            else {
+                throw new URIError("Impossible to call API");
+            }
+        })
+        .catch(() => ({
+            available: false,
+            email: "guillaume.martigny@gmail.com",
+        }))
+        .then((data) => {
+            const {available, email} = data;
+            document.querySelector("#available").textContent = available ? "yes" : "nope";
+
+            document.querySelector("#infos").innerHTML = available ?
+                `You can send me an email at <a href="mailto:${email}">${email}</a>.` :
+                "Sorry, I must be busy for now.";
+        });
+</script>
+</body>
+</html>
