@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "allow-cors": "^1.0.0"
+    }
+}
