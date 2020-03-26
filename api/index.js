@@ -1,10 +1,12 @@
-module.exports = (req, res) => {
-    const body = {
+const allow = require("allow-cors");
+
+module.exports = (request, response) => {
+    allow(response);
+
+    const payload = {
         available: true,
         email: "guillaume.martigny@gmail.com"
     };
 
-    res
-        .status(200)
-        .send(JSON.stringify(body));
+    response.json(payload);
 };
