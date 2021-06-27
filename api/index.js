@@ -4,8 +4,8 @@ module.exports = (request, response) => {
     allow(response);
 
     const payload = {
-        available: true,
-        email: "guillaume.martigny@gmail.com"
+        available: false,
+        email: "guillaume.martigny@gmail.com",
     };
 
     response.json(payload);
